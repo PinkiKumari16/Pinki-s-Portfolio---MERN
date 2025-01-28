@@ -1,1 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+
+*{
+    font-family: "Montserrat", serif;
+}
+
+/* p-#0A192F
+s-#F97316
+t-#54D6BB */
