@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar } from '../components/Navbar'
+// import { Navbar } from '../components/Navbar'
 import { IntroSection } from './sections/IntroSection'
 import { AboutSection } from './sections/AboutSection'
 
@@ -7,8 +7,7 @@ import { AboutSection } from './sections/AboutSection'
 export const HomePage = () => {
   return (
     <>
-      <Navbar />
-      <div className='bg-[#0A192F] flex flex-col gap-10 py-10'>
+      <div className='bg-primary flex flex-col gap-30 sm:gap-10 py-20 sm:p-10'>
         <IntroSection />
         <AboutSection />
       </div>
