@@ -10,3 +10,17 @@
 *{
     font-family: "Montserrat", serif;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+  /* Track */
+::-webkit-scrollbar-track {
+    background: var(--color-primary); 
+}
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+  
