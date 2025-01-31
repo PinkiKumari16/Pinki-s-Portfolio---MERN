@@ -18,17 +18,18 @@ export const Experiences = () => {
     <div className="p-5 -mt-20 md:mt-0">
       <TitlesName title="Experiences" />
       <div className="flex flex-col gap-12 md:justify-around md:flex-row md:items-center sm:mt-10">
-        <div className="flex md:flex-col overflow-x-scroll md:overflow-hidden gap-8 border-l-3 border-[#135e4c82]">
+        <div className="flex md:flex-col overflow-x-scroll md:overflow-hidden gap-8 sm:border-l-2 border-[#135e4c82]">
           {experienceData.map((expData, index) => (
             <h1
               onClick={() => {
                 handleCompanyData(expData, index);
               }}
-              className={`sm:px-8 py-2 text-1xl rounded md:-ml-1 cursor-pointer ${
+              className={`sm:px-8 py-2 text-1xl sm:rounded cursor-pointer ${
                 selectedIndex === index
-                  ? "font-semibold text-tertiary border-l-4 sm:bg-[#1a7f5a31] md:border-l-4 md:text-tertiary md:font-semibold"
+                  ? "font-semibold text-tertiary sm:border-l-4 border-b-2 sm:border-b-0 bg-[#1a7f5a31]"
                   : "text-white"
               }`}
+              
             >
               {expData.period}
             </h1>
