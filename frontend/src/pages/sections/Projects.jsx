@@ -9,21 +9,22 @@ export const Projects = () => {
     <div className='sm:mt-10 px-5'>
         <TitlesName title="Projects" />
         <div className='flex flex-col lg:flex-row items-center justify-around gap-20'>
-            <div className='flex sm:flex-row lg:flex-col text--300 py-5 gap-8 border-l-2 text-[#044150] w-2/5'>{
+            <div className='flex sm:flex-row lg:flex-col py-5 gap-8 overflow-x-scroll lg:overflow-hidden lg:border-l-2 text-[#044150] lg:w-2/5 ml-15 sm:ml-0 lg:ml-10'>{
                 projectsData.map((data, index)=>(
-                    <h1 className={`sm:px-8 cursor-pointer sm:-ml-1 sm:py-1
-                    ${(projectIndex === index)? "sm:border-l-5 text-tertiary rounded" : "text-white"}`}
+                    <h1 className={`lg:px-8 cursor-pointer py-1
+                    ${(projectIndex === index)? "border-b-3 lg:border-b-0 lg:border-l-5 text-tertiary bg-[#1a7f5a31]" : "text-white"}`}
                     onClick={()=>setProjectIndex(index)}>
-                        
-                        {data.title}</h1>
+                        {data.title}
+                    </h1>
                 ))}
             </div>
-            <div className='flex gap-10'>
-                <div
-                    className='h-[45vh] w-[50vw] bg-cover bg-center'
+            <div className='flex flex-col md:flex-row gap-10 justify-around'>
+                <img src={projectsData[projectIndex].image} alt="project image" className='h-[45vh] md:w-[50vw] lg:w-[20vw] bg-cover bg-center' />
+                {/* <div
+                    className='h-[45vh] md:w-[50vw] lg:w-[20vw] bg-cover bg-center'
                     style={{backgroundImage: `url(${projectsData[projectIndex].image})`}}
-                >project image</div>
-                <div>
+                ></div> */}
+                <div className='md:w-3/5'>
                     <h1 className='text-secondry text-3xl font-semibold py-5'>{projectsData[projectIndex].title}</h1>
                     <p className='text-white'>{projectsData[projectIndex].technologies}</p><br />
                     <p className='text-white'>{projectsData[projectIndex].description}</p>
