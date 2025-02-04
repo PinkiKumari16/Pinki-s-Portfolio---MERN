@@ -4,6 +4,7 @@ import { IntroSection } from "./sections/IntroSection";
 import { AboutSection } from "./sections/AboutSection";
 import { Experiences } from "./sections/Experiences";
 import { Projects } from "./sections/Projects"
+import { Courses } from "./sections/Courses";
 
 export const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ export const HomePage = () => {
         <AboutSection />
         <Experiences />
         <Projects />
+        <Courses />
       </div>
     </>
   );
