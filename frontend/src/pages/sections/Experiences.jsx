@@ -15,7 +15,7 @@ export const Experiences = () => {
   };
 
   return (
-    <div className="p-5 -mt-20 md:mt-0">
+    <div>
       <TitlesName title="Experiences" />
       <div className="flex flex-col gap-12 md:justify-around md:flex-row md:items-center sm:mt-10">
         <div className="flex md:flex-col overflow-x-scroll md:overflow-hidden gap-8 sm:border-l-2 border-[#135e4c82]">

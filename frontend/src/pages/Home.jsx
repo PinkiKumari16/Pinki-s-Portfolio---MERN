@@ -11,7 +11,7 @@ import { Footer } from "../components/Footer";
 export const HomePage = () => {
   return (
     <>
-      <div className="bg-primary flex flex-col gap-30 sm:gap-10 py-20 sm:p-10">
+      <div className="bg-primary flex flex-col gap-25 sm:gap-20 py-10 px-8 md:px-20 lg:px-30">
         <IntroSection />
         <AboutSection />
         <Experiences />

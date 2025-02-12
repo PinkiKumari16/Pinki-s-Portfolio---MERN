@@ -16,7 +16,7 @@ export const Contact = () => {
         "country":"INDIA"  
     }
   return (
-    <div className='p-5'>
+    <div>
         <TitlesName title="Say Hello" />
         <div className='flex flex-col md:flex-row justify-around items-center'>
             <div className='text-tertiary'>

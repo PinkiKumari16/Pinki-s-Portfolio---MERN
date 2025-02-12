@@ -5,7 +5,7 @@ import { coursesData } from "../../resources/coursesData";
 export const Courses = () => {
   const [selecetedCourseIndex, setSelectedCourseIndex] = useState(0);
   return (
-    <div className="lg:mt-15 px-5">
+    <div>
       <TitlesName title="Courses" />
       <div className="flex flex-col lg:flex-row gap-10 lg:justify-around">
         <div className="flex flex-row overflow-x-scroll lg: overflow-x-hidden lg:flex-col gap-5 border-l-3 text-[#044150]">

@@ -14,7 +14,7 @@ export const AboutSection = () => {
   ];
   return (
     <>
-      <div className="px-5">
+      <div>
         <TitlesName title="About Me" />
         <div className="flex flex-col items-center gap-7 sm:gap-15 justify-center sm:flex-row sm:p-10 md:p-1">
           <div

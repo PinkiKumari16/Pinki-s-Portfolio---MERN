@@ -4,7 +4,7 @@ import { SkillButton } from "../../components/SkillButton";
 export const IntroSection = () => {
   return (
     <>
-      <div className="h-[80vh] flex flex-col items-start px-8 sm:px-20 md:px-20 justify-center gap-8">
+      <div className="h-[80vh] flex flex-col items-start justify-center gap-8 mt-20 sm:mt-0">
         <h1 className="text-white">Hii, I am</h1>
         <h1 className="text-secondry text-5xl md:text-6xl lg:text-7xl font-semibold">
           Pinki Kumari

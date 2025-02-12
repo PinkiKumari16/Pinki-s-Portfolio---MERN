@@ -5,7 +5,7 @@ import { projectsData } from "../../resources/projectData";
 export const Projects = () => {
   const [projectIndex, setProjectIndex] = useState(0);
   return (
-    <div className="sm:mt-10 px-5">
+    <div>
       <TitlesName title="Projects" />
       <div className="flex flex-col lg:flex-row items-center justify-around gap-20">
         <div className="flex flex-row lg:flex-col py-5 gap-8 overflow-x-scroll lg:overflow-x-hidden lg:border-l-2 text-[#044150] lg:w-2/3 ml-35 sm:ml-0 lg:ml-10">
