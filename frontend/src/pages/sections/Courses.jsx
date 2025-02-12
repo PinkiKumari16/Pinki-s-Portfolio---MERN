@@ -31,12 +31,9 @@ export const Courses = () => {
               {coursesData[selecetedCourseIndex].description}
             </p>
           </div>
-          <div
-            className="h-[70vh] w-full md:w-[50vw] lg:h-[55vh] lg:w-[30vw] bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${coursesData[selecetedCourseIndex].image})`,
-            }}
-          ></div>
+          <img src={coursesData[selecetedCourseIndex].image} alt="course image"
+           className="h-[40vh] w-full md:w-[40vw] lg:w-[30vw] bg-cover bg-center"
+          />
         </div>
       </div>
     </div>

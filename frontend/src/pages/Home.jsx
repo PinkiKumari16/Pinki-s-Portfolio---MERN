@@ -5,6 +5,8 @@ import { AboutSection } from "./sections/AboutSection";
 import { Experiences } from "./sections/Experiences";
 import { Projects } from "./sections/Projects"
 import { Courses } from "./sections/Courses";
+import { Contact } from './sections/Contact';
+import { Footer } from "../components/Footer";
 
 export const HomePage = () => {
   return (
@@ -15,6 +17,8 @@ export const HomePage = () => {
         <Experiences />
         <Projects />
         <Courses />
+        <Contact />
+        <Footer />
       </div>
     </>
   );
