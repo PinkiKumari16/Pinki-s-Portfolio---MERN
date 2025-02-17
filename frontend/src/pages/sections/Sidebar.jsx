@@ -8,7 +8,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 export const Sidebar = () => {
   return (
     <div className='static md:fixed md:left-0 md:bottom-0 md:px-4 lg:px-6'>
-      <div className='flex flex-row md:flex-col items-center gap-5'>
+      <div className='flex flex-col items-center gap-5'>
         <div className='flex md:flex-col gap-6 text-gray-400'>
           <a href="pinkikmr2672002@gmail.com" target='_blank'><AttachEmailRoundedIcon /></a>
           <a href="https://www.linkedin.com/in/pinki-kumari-42b409257/" target='_blank'><LinkedInIcon /></a>
@@ -16,7 +16,7 @@ export const Sidebar = () => {
           <a href="https://www.facebook.com/" target='_blank'><FacebookRoundedIcon /></a>
           <a href="https://www.instagram.com/" target='_blank'><InstagramIcon /></a>
         </div>
-        <div className='w-35 h-[1px] md:w-[1px] md:h-32 bg-[#125f63]'></div>
+        <div className='w-0 md:w-[1px] h-32 bg-[#125f63]'></div>
       </div>
     </div>
   )
