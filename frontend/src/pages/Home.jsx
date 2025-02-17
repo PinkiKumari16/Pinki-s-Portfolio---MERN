@@ -7,6 +7,7 @@ import { Projects } from "./sections/Projects"
 import { Courses } from "./sections/Courses";
 import { Contact } from './sections/Contact';
 import { Footer } from "../components/Footer";
+import { Sidebar } from "./sections/Sidebar";
 
 export const HomePage = () => {
   return (
@@ -19,6 +20,7 @@ export const HomePage = () => {
         <Courses />
         <Contact />
         <Footer />
+        <Sidebar />
       </div>
     </>
   );

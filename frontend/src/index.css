@@ -23,5 +23,11 @@
     background: #888; 
     /* background: #044150;  */
 }
+a{
+    cursor: pointer;
+}
+a:hover{
+    color: #fff;
+}
 
   
