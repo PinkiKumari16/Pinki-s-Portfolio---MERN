@@ -15,7 +15,7 @@ export const Experiences = () => {
   };
 
   return (
-    <div>
+    <div id="experiences">
       <TitlesName title="Experiences" />
       <div className="flex flex-col gap-12 md:justify-around md:flex-row md:items-center sm:mt-10">
         <div className="flex md:flex-col overflow-x-scroll md:overflow-hidden gap-8 sm:border-l-2 border-[#135e4c82]">
@@ -29,7 +29,6 @@ export const Experiences = () => {
                   ? "font-semibold text-tertiary sm:border-l-4 border-b-2 sm:border-b-0 bg-[#1a7f5a31]"
                   : "text-white"
               }`}
-              
             >
               {expData.period}
             </h1>

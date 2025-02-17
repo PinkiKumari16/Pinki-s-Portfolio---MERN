@@ -5,16 +5,16 @@ import { coursesData } from "../../resources/coursesData";
 export const Courses = () => {
   const [selecetedCourseIndex, setSelectedCourseIndex] = useState(0);
   return (
-    <div>
+    <div id="courses">
       <TitlesName title="Courses" />
       <div className="flex flex-col lg:flex-row gap-10 lg:justify-around">
         <div className="flex flex-row overflow-x-scroll lg: overflow-x-hidden lg:flex-col gap-5 border-l-3 text-[#044150]">
           {coursesData.map((course, index) => (
             <h1
               className={`px-5 py-2 cursor-pointer ${
-                selecetedCourseIndex === index ? 
-                "text-tertiary border-l-5" :
-                "text-white"
+                selecetedCourseIndex === index
+                  ? "text-tertiary border-l-5"
+                  : "text-white"
               }`}
               onClick={() => setSelectedCourseIndex(index)}
             >
@@ -31,8 +31,10 @@ export const Courses = () => {
               {coursesData[selecetedCourseIndex].description}
             </p>
           </div>
-          <img src={coursesData[selecetedCourseIndex].image} alt="course image"
-           className="h-[40vh] w-full md:w-[40vw] lg:w-[30vw] bg-cover bg-center"
+          <img
+            src={coursesData[selecetedCourseIndex].image}
+            alt="course image"
+            className="h-[40vh] w-full md:w-[40vw] lg:w-[30vw] bg-cover bg-center"
           />
         </div>
       </div>
