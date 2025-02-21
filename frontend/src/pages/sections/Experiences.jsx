@@ -32,7 +32,7 @@ export const Experiences = () => {
                   : "text-white"
               }`}
             >
-              {expData.period}
+              {expData.period || " "}
             </h1>
           ))}
         </div>

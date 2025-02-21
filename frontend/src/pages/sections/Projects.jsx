@@ -21,13 +21,13 @@ export const Projects = () => {
                     }`}
               onClick={() => setProjectIndex(index)}
             >
-              {data.projectName}
+              {data.projectName || " "}
             </h1>
           ))}
         </div>
         <div className="flex flex-col md:flex-row gap-10 justify-around">
           <img
-            src={projects[projectIndex].projectImage}
+            src={projects[projectIndex].projectImage || " "}
             alt="project image"
             className="h-[45vh] md:w-[50vw] lg:w-[20vw] bg-cover bg-center"
           />
@@ -37,7 +37,7 @@ export const Projects = () => {
                 ></div> */}
           <div className="md:w-3/5">
             <h1 className="text-secondry text-3xl font-semibold py-5">
-              {projects[projectIndex].projectName}
+              {projects[projectIndex].projectName || " "}
             </h1>
             {projects[projectIndex].technology.map((technologyUsed)=>(
               <span className="text-white">
@@ -45,7 +45,7 @@ export const Projects = () => {
               </span>
             ))}
             <p className="text-white mt-4">
-              {projects[projectIndex].projectDescription}
+              {projects[projectIndex].projectDescription || " "}
             </p>
           </div>
         </div>

@@ -15,22 +15,22 @@ export const Contact = () => {
         <div className="text-tertiary">
           <span>&#123;</span>
           <p className="px-10 py-2">
-            Name : {contact.name},
+            Name : {contact.name || " "},
           </p>
           <p className="px-10 py-2">
-            Age : {contact.age},
+            Age : {contact.age || " "},
           </p>
           <p className="px-10 py-2">
-            Gender : {contact.gender},
+            Gender : {contact.gender || " "},
           </p>
           <p className="px-10 py-2">
-           Email : {contact.email},
+           Email : {contact.email || " "},
           </p>
           <p className="px-10 py-2">
-            Mobile : {contact.mobile},
+            Mobile : {contact.mobile || " "},
           </p>
           <p className="px-10 py-2">
-            Country : {contact.country},
+            Country : {contact.country || " "},
           </p>
           {/* {Object.keys(contact).map((data) => (
             <p className="px-10 py-2">

@@ -20,21 +20,21 @@ export const Courses = () => {
               }`}
               onClick={() => setSelectedCourseIndex(index)}
             >
-              {course.courseName}
+              {course.courseName || " "}
             </h1>
           ))}
         </div>
         <div className="flex flex-col md:flex-row items-center gap-10 lg:w-3/5">
           <div className="md:w-1/2 lg:w-2/3">
             <h1 className="text-secondry text-3xl py-5 font-semibold">
-              {courses[selecetedCourseIndex].courseName}
+              {courses[selecetedCourseIndex].courseName || " "}
             </h1>
             <p className="text-white">
-              {courses[selecetedCourseIndex].courseDescription}
+              {courses[selecetedCourseIndex].courseDescription || " "}
             </p>
           </div>
           <img
-            src={courses[selecetedCourseIndex].courseImage}
+            src={courses[selecetedCourseIndex].courseImage || " "}
             alt="course image"
             className="h-[40vh] w-full md:w-[40vw] lg:w-[30vw] bg-cover bg-center"
           />
