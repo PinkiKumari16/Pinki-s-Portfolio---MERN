@@ -4,7 +4,7 @@ import { ExperienceContent } from "../../components/ExperienceContent";
 import { useSelector } from "react-redux";
 
 export const Experiences = () => {
-  const { portfolioData } = useSelector((state)=>state.root);
+  const { portfolioData } = useSelector((state) => state.root);
   const { experiences } = portfolioData;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [companyExperience, setCompanyExperience] = useState(

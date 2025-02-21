@@ -4,10 +4,10 @@ import { SkillButton } from "../../components/SkillButton";
 import { useSelector } from "react-redux";
 
 export const AboutSection = () => {
-  const { portfolioData } = useSelector((state)=>state.root);
-  const {about} = portfolioData;
-  const {developerImage, description1, description2, skills } = about; 
- 
+  const { portfolioData } = useSelector((state) => state.root);
+  const { about } = portfolioData;
+  const { developerImage, description1, description2, skills } = about;
+
   return (
     <div id="about">
       <TitlesName title="About Me" />
@@ -19,12 +19,8 @@ export const AboutSection = () => {
           }}
         ></div>
         <div className="flex flex-col px-5 gap-10 sm:w-1/2 sm:p-0 md:gap-5 md:w-2/3 md:text-[14px] lg:gap-10 lg:text-[18px] text-white">
-          <p>
-            {description1 || " "}
-          </p>
-          <p>
-            {description2 || " "}
-          </p>
+          <p>{description1 || " "}</p>
+          <p>{description2 || " "}</p>
         </div>
       </div>
       <div className="py-10 ml-5 sm:ml-20 md:ml-2">

@@ -3,7 +3,7 @@ import { TitlesName } from "../../components/TitlesName";
 import { useSelector } from "react-redux";
 
 export const Projects = () => {
-  const { portfolioData } =useSelector((state)=>state.root);
+  const { portfolioData } = useSelector((state) => state.root);
   const { projects } = portfolioData;
   const [projectIndex, setProjectIndex] = useState(0);
   return (
@@ -39,10 +39,8 @@ export const Projects = () => {
             <h1 className="text-secondry text-3xl font-semibold py-5">
               {projects[projectIndex].projectName || " "}
             </h1>
-            {projects[projectIndex].technology.map((technologyUsed)=>(
-              <span className="text-white">
-                {technologyUsed + ", "}
-              </span>
+            {projects[projectIndex].technology.map((technologyUsed) => (
+              <span className="text-white">{technologyUsed + ", "}</span>
             ))}
             <p className="text-white mt-4">
               {projects[projectIndex].projectDescription || " "}

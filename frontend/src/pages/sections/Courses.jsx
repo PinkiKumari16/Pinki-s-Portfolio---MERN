@@ -3,14 +3,14 @@ import { TitlesName } from "../../components/TitlesName";
 import { useSelector } from "react-redux";
 
 export const Courses = () => {
-  const {portfolioData} = useSelector((state)=>state.root);
-  const {courses} = portfolioData;
+  const { portfolioData } = useSelector((state) => state.root);
+  const { courses } = portfolioData;
   const [selecetedCourseIndex, setSelectedCourseIndex] = useState(0);
   return (
     <div id="courses">
       <TitlesName title="Courses" />
       <div className="flex flex-col lg:flex-row gap-10 lg:justify-around">
-        <div className="flex flex-row overflow-x-scroll lg: overflow-x-hidden lg:flex-col gap-5 border-l-3 text-[#044150]">
+        <div className="flex flex-row overflow-x-scroll lg:overflow-x-hidden lg:flex-col gap-5 border-l-3 text-[#044150]">
           {courses.map((course, index) => (
             <h1
               className={`px-5 py-2 cursor-pointer ${

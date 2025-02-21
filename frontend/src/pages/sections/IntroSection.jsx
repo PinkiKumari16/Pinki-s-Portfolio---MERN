@@ -3,9 +3,9 @@ import { SkillButton } from "../../components/SkillButton";
 import { useSelector } from "react-redux";
 
 export const IntroSection = () => {
-const { portfolioData } = useSelector((state) => state.root);
+  const { portfolioData } = useSelector((state) => state.root);
   const { intro } = portfolioData;
-  const {welcomeText, caption, description, firstName, lastName} = intro;
+  const { welcomeText, caption, description, firstName, lastName } = intro;
   return (
     <div
       className="h-[80vh] flex flex-col items-start justify-center gap-8 mt-20 sm:mt-0"
