@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { TitlesName } from "../../components/TitlesName";
-import { experienceData } from "../../resources/experienceData";
 import { ExperienceContent } from "../../components/ExperienceContent";
+import { useSelector } from "react-redux";
 
 export const Experiences = () => {
+  const { portfolioData } = useSelector((state)=>state.root);
+  const { experiences } = portfolioData;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [companyExperience, setCompanyExperience] = useState(
-    experienceData[selectedIndex]
+    experiences[selectedIndex]
   );
 
   const handleCompanyData = (expData, index) => {
@@ -19,7 +21,7 @@ export const Experiences = () => {
       <TitlesName title="Experiences" />
       <div className="flex flex-col gap-12 md:justify-around md:flex-row md:items-center sm:mt-10">
         <div className="flex md:flex-col overflow-x-scroll md:overflow-hidden gap-8 sm:border-l-2 border-[#135e4c82]">
-          {experienceData.map((expData, index) => (
+          {experiences.map((expData, index) => (
             <h1
               onClick={() => {
                 handleCompanyData(expData, index);

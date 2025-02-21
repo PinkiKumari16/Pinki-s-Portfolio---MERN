@@ -9,7 +9,7 @@ import { showLoading, hideLoading, setPortfolioData } from "./redux/rootSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { loading } = useSelector((state) => state.root);
 
   const getPortfolioData = async () => {
     dispatch(showLoading());
@@ -27,9 +27,9 @@ function App() {
     getPortfolioData();
   }, []);
 
-  useEffect(() => {
-    console.log(portfolioData);
-  }, [portfolioData]);
+  // useEffect(() => {
+  //   console.log(portfolioData);
+  // }, [portfolioData]);
 
   return (
     <>

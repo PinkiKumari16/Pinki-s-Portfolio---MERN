@@ -1,17 +1,13 @@
 import React from "react";
 import { TitlesName } from "../../components/TitlesName";
 import { SkillButton } from "../../components/SkillButton";
+import { useSelector } from "react-redux";
 
 export const AboutSection = () => {
-  const skills = [
-    "HTML & CSS",
-    "Javascript",
-    "React",
-    "Express",
-    "Redux",
-    "Mongo DB",
-    "ZOHO",
-  ];
+  const { portfolioData } = useSelector((state)=>state.root);
+  const {about} = portfolioData;
+  const {developerImage, description1, description2, skills } = about; 
+ 
   return (
     <div id="about">
       <TitlesName title="About Me" />
@@ -19,26 +15,15 @@ export const AboutSection = () => {
         <div
           className="h-[55vh] w-[80vw] sm:h-[60vh] sm:w-[30vw] bg-cover bg-center"
           style={{
-            backgroundImage: `url(https://img.freepik.com/free-photo/3d-rendering-cute-girl-with-glasses-working-her-laptop_1057-45909.jpg?t=st=1738050869~exp=1738054469~hmac=caf4424a20edc4d179a6407c2b95e57d6943fe43425524f95836484cee125feb&w=740)`,
+            backgroundImage: `url(${developerImage})`,
           }}
         ></div>
         <div className="flex flex-col px-5 gap-10 sm:w-1/2 sm:p-0 md:gap-5 md:w-2/3 md:text-[14px] lg:gap-10 lg:text-[18px] text-white">
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit saepe
-            officia laudantium quisquam autem rerum molestias provident
-            inventore cum officiis, nihil sed voluptates dicta eligendi
-            voluptate fugiat voluptatibus non atque!
+            {description1 || " "}
           </p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ad
-            nobis, saepe praesentium quam aperiam laborum tempore magni dolores,
-            vitae illum aliquam eligendi fuga, accusamus tenetur in sunt
-            voluptatibus numquam?Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Culpa ad nobis, saepe praesentium quam aperiam
-            laborum tempore magni dolores, vitae illum aliquam eligendi fuga,
-            accusamus tenetur in sunt voluptatibus numquam?Lorem ipsum dolor sit
-            amet consectetur atempore magni dolores, vitae illum aliquam
-            eligendi fuga, accusamus tenetur in sunt voluptatibus numquam?
+            {description2 || " "}
           </p>
         </div>
       </div>
