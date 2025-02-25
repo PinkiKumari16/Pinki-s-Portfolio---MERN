@@ -11,22 +11,22 @@ export const Sidebar = () => {
       <div className="flex flex-col items-center gap-5">
         <div className="flex md:flex-col gap-6 text-gray-400">
           <a href="pinkikmr2672002@gmail.com" target="_blank">
-            <AttachEmailRoundedIcon />
+            <AttachEmailRoundedIcon className="icon-size"/>
           </a>
           <a
             href="https://www.linkedin.com/in/pinki-kumari-42b409257/"
             target="_blank"
           >
-            <LinkedInIcon />
+            <LinkedInIcon className="icon-size"/>
           </a>
           <a href="https://github.com/PinkiKumari16/" target="_blank">
-            <GitHubIcon />
+            <GitHubIcon className="icon-size"/>
           </a>
           <a href="https://www.facebook.com/" target="_blank">
-            <FacebookRoundedIcon />
+            <FacebookRoundedIcon className="icon-size"/>
           </a>
           <a href="https://www.instagram.com/" target="_blank">
-            <InstagramIcon />
+            <InstagramIcon className="icon-size"/>
           </a>
         </div>
         <div className="w-0 md:w-[1px] h-32 bg-[#125f63]"></div>

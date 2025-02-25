@@ -75,4 +75,7 @@ a:hover{
         opacity: 1;
     }
 }
+.icon-size {
+    font-size: 16px !important;
+  }
   

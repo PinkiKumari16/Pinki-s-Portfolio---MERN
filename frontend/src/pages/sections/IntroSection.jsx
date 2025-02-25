@@ -18,7 +18,7 @@ export const IntroSection = () => {
       <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-semibold">
         {caption || " "}
       </h1>
-      <p className="text-white w-full sm:w-3/4 md:w-full lg:w-1/2 xl:w-2/3 sm:text-left">
+      <p className="text-white w-full lg:w-2/3 sm:text-left">
         {description || " "}
       </p>
       <SkillButton data="Get Started" />
