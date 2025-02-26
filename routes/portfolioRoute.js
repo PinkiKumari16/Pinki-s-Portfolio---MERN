@@ -6,6 +6,7 @@ const ProjectModel = require("../models/ProjectModel");
 const CourseModel = require("../models/CourseModel");
 const CotactModel = require("../models/ContactModel");
 
+// get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
   try {
     const introData = await IntroModel.find();
@@ -27,5 +28,24 @@ router.get("/get-portfolio-data", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+router.post("/update-intro", async (req, res) => {
+  try {
+    // console.log(req.body);
+    const introData = await IntroModel.findOneAndUpdate(
+        {_id: req.body._id},
+        req.body,
+        {new: true}
+    );
+    res.status(200).send({
+        data: introData,
+        success: true,
+        message: "Intro updated successfully."
+    })
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 
 module.exports = router;
