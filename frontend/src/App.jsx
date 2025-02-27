@@ -16,7 +16,7 @@ function App() {
     
     try {
       dispatch(showLoading());
-      const response = await axios.get("/api/get-portfolio-data");
+      const response = await axios.get("/api/portfoliodata/get-portfolio-data");
       dispatch(setPortfolioData(response.data));
 
     } catch (error) {

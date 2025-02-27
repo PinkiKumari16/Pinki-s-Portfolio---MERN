@@ -14,7 +14,7 @@ export const AdminIntro = () => {
   const getUpdatedData = async(values) =>{
     try{
       dispatch(showLoading());
-      const response = await axios.post("/api/update-intro", {
+      const response = await axios.post("/api/portfoliodata/update-intro", {
         ...values,
         _id: intro._id,
       })

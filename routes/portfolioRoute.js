@@ -5,6 +5,7 @@ const ExperienceModel = require("../models/ExperienceModel");
 const ProjectModel = require("../models/ProjectModel");
 const CourseModel = require("../models/CourseModel");
 const CotactModel = require("../models/ContactModel");
+const { Router } = require("express");
 
 // get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
@@ -29,6 +30,7 @@ router.get("/get-portfolio-data", async (req, res) => {
   }
 });
 
+// update Intro data
 router.post("/update-intro", async (req, res) => {
   try {
     // console.log(req.body);
@@ -47,5 +49,24 @@ router.post("/update-intro", async (req, res) => {
   }
 });
 
+
+// update about data
+
+router.post("/update-about", async (req, res)=>{
+  try {
+    const newAboutData = await AboutModel.findOneAndUpdate(
+      {_id: req.body._id},
+      req.body,
+      {new: true}
+    );
+    res.status(200).send({
+      data: newAboutData,
+      success: true,
+      message: "About Data Updated Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error);
+  }
+});
 
 module.exports = router;
