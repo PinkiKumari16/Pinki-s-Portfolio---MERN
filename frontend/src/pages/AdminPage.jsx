@@ -13,8 +13,7 @@ export const AdminPage = () => {
     <div>
       <Navbar navbarTitle="Admin Panel" sectionsTitle={[]} />
       {portfolioData && (
-        <div className="p-4 mt-20">
-          {/* <Tabs defaultActiveKey="1" items={items} /> */}
+        <div className="adminpanel p-4 mt-20">
           <Tabs defaultActiveKey="1">
             <TabPane tab="Intro" key="1">
               <AdminIntro />

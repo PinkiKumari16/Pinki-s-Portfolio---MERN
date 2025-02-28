@@ -78,5 +78,7 @@ a:hover{
 .icon-size {
     font-size: 16px !important;
 }
-
+.adminpanel button{
+    cursor: pointer;
+}
   

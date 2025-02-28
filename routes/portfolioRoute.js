@@ -33,17 +33,16 @@ router.get("/get-portfolio-data", async (req, res) => {
 // update Intro data
 router.post("/update-intro", async (req, res) => {
   try {
-    // console.log(req.body);
     const introData = await IntroModel.findOneAndUpdate(
-        {_id: req.body._id},
-        req.body,
-        {new: true}
+      { _id: req.body._id },
+      req.body,
+      { new: true }
     );
     res.status(200).send({
-        data: introData,
-        success: true,
-        message: "Intro updated successfully."
-    })
+      data: introData,
+      success: true,
+      message: "Intro updated successfully.",
+    });
   } catch (error) {
     res.status(500).send(error);
   }
@@ -51,20 +50,50 @@ router.post("/update-intro", async (req, res) => {
 
 
 // update about data
-
-router.post("/update-about", async (req, res)=>{
+router.post("/update-about", async (req, res) => {
   try {
     const newAboutData = await AboutModel.findOneAndUpdate(
-      {_id: req.body._id},
+      { _id: req.body._id },
       req.body,
-      {new: true}
+      { new: true }
     );
     res.status(200).send({
       data: newAboutData,
       success: true,
-      message: "About Data Updated Successfully."
-    })
-  }catch(error){
+      message: "About Data Updated Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+
+
+//  experiences operations
+router.post("/experience-add", async (req, res) => {
+  try {
+    const addedExperienceData = await ExperienceModel.insertOne(req.body);
+    res.status(200).send({
+      data: addedExperienceData,
+      success: true,
+      message: "New Experience Added Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.delete("/experience-delete", async (req, res) => {
+  try {
+    const deletedExperience = await ExperienceModel.deleteOne({
+      _id: req.body._id,
+    });
+    res.status(200).send({
+      data: deletedExperience,
+      success: true,
+      message: "Experience Deleted Successfully.",
+    });
+  } catch (error) {
     res.status(500).send(error);
   }
 });

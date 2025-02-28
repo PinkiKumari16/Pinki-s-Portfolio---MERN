@@ -5,6 +5,7 @@ const rootSlice = createSlice({
   initialState: {
     loading: false,
     portfolioData: null,
+    isExpFormShow: false,
   },
   reducers: {
     showLoading: (state, action) => {
@@ -16,9 +17,15 @@ const rootSlice = createSlice({
     setPortfolioData: (state, action) => {
       state.portfolioData = action.payload;
     },
+    showExpForm: (state, action) =>{
+      state.isExpFormShow = true;
+    },
+    hideExpForm: (state, action) =>{
+      state.isExpFormShow = false;
+    }
   },
 });
 
 export default rootSlice.reducer;
-export const { showLoading, hideLoading, setPortfolioData } =
+export const { showLoading, hideLoading, setPortfolioData, showExpForm, hideExpForm } =
   rootSlice.actions;
