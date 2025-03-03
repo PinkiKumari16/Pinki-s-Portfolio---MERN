@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { message } from "antd";
-import { ExperienceForm } from "../../components/ExperienceForm";
-import { useDispatch, useSelector } from "react-redux";
-import { showExpForm } from "../../redux/rootSlice";
+import { Form, Input, message, Modal } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import TextArea from "antd/es/input/TextArea";
+import { setReloadData } from "../../redux/rootSlice";
 
 export const AdminExperience = () => {
-  const { portfolioData, isExpFormShow } = useSelector((state) => state.root);
+  const [selectedItemForEdit, setSelectedItemsForEdit] = useState(null);
+  const [isExperienceFormShow, setIsExperienceFormShow] = useState(false);
+  const { portfolioData, isReloadData } = useSelector((state) => state.root);
   const { experiences } = portfolioData;
   const dispatch = useDispatch();
 
   const deleteExperience = async (exp_id) => {
-    console.log(exp_id);
+    // console.log(exp_id);
     try {
       const response = await axios.delete(
         "/api/portfoliodata/experience-delete",
@@ -20,6 +22,25 @@ export const AdminExperience = () => {
         }
       );
       if (response.data.success) {
+        message.success(response.data.message);
+        dispatch(setReloadData(true));
+      } else {
+        message.error(response.data.message);
+      }
+    } catch (error) {
+      message.error(error);
+    }
+  };
+
+  const addExperience = async (values) => {
+    try {
+      const response = await axios.post(
+        "/api/portfoliodata/experience-add",
+        values
+      );
+      if (response.data.success) {
+        dispatch(setReloadData(true));
+        setIsExperienceFormShow(false);
         message.success(response.data.message);
       } else {
         message.error(response.data.message);
@@ -30,44 +51,72 @@ export const AdminExperience = () => {
   };
   return (
     <div>
-      <h1 className="text-2xl">Experiences</h1>
-      <hr />
-      {isExpFormShow ? <ExperienceForm /> : " "}
-      <div className="flex flex-wrap gap-10 mt-10 p-5 z-[10]">
-        <div
-          className="flex justify-center items-center
-         height-5 border-1 w-1/10"
+      <div className="flex justify-end">
+        <button
+          className="!text-white font-bold py-2 px-3 bg-primary"
+          onClick={() => setIsExperienceFormShow(true)}
         >
-          <div
-            className="flex items-center justify-center h-20 w-20 bg-gray-300 rounded-full text-6xl cursor-pointer"
-            onClick={() => dispatch(showExpForm())}
-          >
-            +
-          </div>
-        </div>
+          Add New Experience
+        </button>
+      </div>
 
+      <div className="grid grid-cols-4 gap-5 mt-2">
         {experiences.map((exp) => (
-          <div className="border-1 p-2 text-center w-4/15" id={exp._id}>
-            <h1>{exp.title}</h1>
-            <p className="flex justify-between">
-              <span>{exp.period}</span>
-              <span>{exp.designation}</span>
-            </p>
-            <p className="text-left">{exp.description}</p>
+          <div className="shadow border border-gray-400 p-5" id={exp._id}>
+            <h1 className="text-xl text-primary">{exp.period}</h1>
+            <hr className="text-gray-300 mb-1" />
+            <p>Company Name: {exp.title}</p>
+            <p>Role: {exp.designation}</p>
+            <p>{exp.description}</p>
             <div className="flex justify-end gap-5">
               <button
-                className="border-1 !text-red border-red-700 p-2 rounded-xl !text-red-700"
+                className="px-4 !text-white bg-red-800"
                 onClick={() => deleteExperience(exp._id)}
               >
                 Delete
               </button>
-              <button className="border-1 p-2 !text-blue-800 border-blue-800 rounded-xl">
-                Edit
-              </button>
+              <button className="p-1 px-5 !text-white bg-primary">Edit</button>
             </div>
           </div>
         ))}
       </div>
+      <Modal
+        visible={isExperienceFormShow}
+        footer={null}
+        onCancel={() => setIsExperienceFormShow(false)}
+      >
+        <h1 className="text-center">
+          {selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+        </h1>
+        <Form layout="vertical" onFinish={addExperience} initialValues=" ">
+          <Form.Item label="Company Name" name="title">
+            <Input></Input>
+          </Form.Item>
+          <Form.Item label="Period" name="period">
+            <Input></Input>
+          </Form.Item>
+          <Form.Item label="Designation" name="designation">
+            <Input></Input>
+          </Form.Item>
+          <Form.Item label="Description" name="description">
+            <TextArea></TextArea>
+          </Form.Item>
+          <div className="flex justify-end gap-5">
+            <button
+              className="!text-primary border !border-primary px-8 py-2 cursor-pointer"
+              onClick={() => setIsExperienceFormShow(false)}
+            >
+              Cencel
+            </button>
+            <button
+              className="bg-primary px-10 py-2 !text-white cursor-pointer"
+              type="submit"
+            >
+              {selectedItemForEdit ? "Edit" : "Add"}
+            </button>
+          </div>
+        </Form>
+      </Modal>
     </div>
   );
 };

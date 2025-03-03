@@ -5,6 +5,9 @@ const { TabPane } = Tabs;
 import { AdminIntro } from "./admin sections/AdminIntro";
 import { AdminAbout } from "./admin sections/AdminAbout";
 import { AdminExperience } from "./admin sections/AdminExperience";
+import { AdminProject } from './admin sections/AdminProject';
+import { AdminCourse } from './admin sections/AdminCourse';
+import {AdminContact } from './admin sections/AdminContact'
 import { useSelector } from "react-redux";
 
 export const AdminPage = () => {
@@ -23,6 +26,15 @@ export const AdminPage = () => {
             </TabPane>
             <TabPane tab="Experience" key="3">
               <AdminExperience />
+            </TabPane>
+            <TabPane tab="Projects" key="4">
+              <AdminProject />
+            </TabPane>
+            <TabPane tab="Courses" key="5">
+              <AdminCourse />
+            </TabPane>
+            <TabPane tab="Contact" key="6">
+              <AdminContact />
             </TabPane>
           </Tabs>
         </div>
