@@ -98,4 +98,21 @@ router.delete("/experience-delete", async (req, res) => {
   }
 });
 
+router.post("/experience-edit", async(req, res)=>{
+  try{
+    const editExperienceData = await ExperienceModel.findOneAndUpdate(
+      {_id: req.body._id},
+      req.body,
+      {new: true}
+    )
+    res.status(200).send({
+      data: editExperienceData,
+      success: true,
+      message: "Experience Data Updated Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error)
+  }
+})
+
 module.exports = router;

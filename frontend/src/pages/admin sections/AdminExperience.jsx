@@ -3,12 +3,17 @@ import axios from "axios";
 import { Form, Input, message, Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import TextArea from "antd/es/input/TextArea";
-import { setReloadData } from "../../redux/rootSlice";
+import {
+  setReloadData,
+  hideLoading,
+  setSelectedItemsForEdit,
+} from "../../redux/rootSlice";
 
 export const AdminExperience = () => {
-  const [selectedItemForEdit, setSelectedItemsForEdit] = useState(null);
   const [isExperienceFormShow, setIsExperienceFormShow] = useState(false);
-  const { portfolioData, isReloadData } = useSelector((state) => state.root);
+  const { portfolioData, selectedItemForEdit } = useSelector(
+    (state) => state.root
+  );
   const { experiences } = portfolioData;
   const dispatch = useDispatch();
 
@@ -32,15 +37,24 @@ export const AdminExperience = () => {
     }
   };
 
-  const addExperience = async (values) => {
+  const addAndEditExperience = async (values) => {
     try {
-      const response = await axios.post(
-        "/api/portfoliodata/experience-add",
-        values
-      );
+      let response;
+      if (selectedItemForEdit) {
+        response = await axios.post("/api/portfoliodata/experience-edit", {
+          ...values,
+          _id: selectedItemForEdit._id,
+        });
+      } else {
+        response = await axios.post(
+          "/api/portfoliodata/experience-add",
+          values
+        );
+      }
       if (response.data.success) {
-        dispatch(setReloadData(true));
+        dispatch(setSelectedItemsForEdit(null));
         setIsExperienceFormShow(false);
+        dispatch(setReloadData(true));
         message.success(response.data.message);
       } else {
         message.error(response.data.message);
@@ -54,7 +68,9 @@ export const AdminExperience = () => {
       <div className="flex justify-end">
         <button
           className="!text-white font-bold py-2 px-3 bg-primary"
-          onClick={() => setIsExperienceFormShow(true)}
+          onClick={() => {
+            setIsExperienceFormShow(true);
+          }}
         >
           Add New Experience
         </button>
@@ -75,20 +91,35 @@ export const AdminExperience = () => {
               >
                 Delete
               </button>
-              <button className="p-1 px-5 !text-white bg-primary">Edit</button>
+              <button
+                className="p-1 px-5 !text-white bg-primary"
+                onClick={() => {
+                  dispatch(setSelectedItemsForEdit(exp)); // Set selected experience for editing
+                  setIsExperienceFormShow(true);
+                }}
+              >
+                Edit
+              </button>
             </div>
           </div>
         ))}
       </div>
       <Modal
-        visible={isExperienceFormShow}
+        open={isExperienceFormShow}
         footer={null}
-        onCancel={() => setIsExperienceFormShow(false)}
+        onCancel={() => {
+          setIsExperienceFormShow(false);
+        }}
       >
         <h1 className="text-center">
           {selectedItemForEdit ? "Edit Experience" : "Add Experience"}
         </h1>
-        <Form layout="vertical" onFinish={addExperience} initialValues=" ">
+        <Form
+          layout="vertical"
+          onFinish={addAndEditExperience}
+          initialValues={selectedItemForEdit || {}}
+          key={selectedItemForEdit ? selectedItemForEdit._id : "new"}
+        >
           <Form.Item label="Company Name" name="title">
             <Input></Input>
           </Form.Item>
@@ -104,7 +135,11 @@ export const AdminExperience = () => {
           <div className="flex justify-end gap-5">
             <button
               className="!text-primary border !border-primary px-8 py-2 cursor-pointer"
-              onClick={() => setIsExperienceFormShow(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsExperienceFormShow(false);
+                dispatch(setSelectedItemsForEdit(null));
+              }}
             >
               Cencel
             </button>
