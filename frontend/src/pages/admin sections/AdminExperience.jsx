@@ -6,12 +6,12 @@ import TextArea from "antd/es/input/TextArea";
 import {
   setReloadData,
   hideLoading,
-  setSelectedItemsForEdit,
 } from "../../redux/rootSlice";
 
 export const AdminExperience = () => {
   const [isExperienceFormShow, setIsExperienceFormShow] = useState(false);
-  const { portfolioData, selectedItemForEdit } = useSelector(
+  const [selectedItemForEdit, setSelectedItemsForEdit] = useState(null)
+  const { portfolioData } = useSelector(
     (state) => state.root
   );
   const { experiences } = portfolioData;
@@ -52,7 +52,7 @@ export const AdminExperience = () => {
         );
       }
       if (response.data.success) {
-        dispatch(setSelectedItemsForEdit(null));
+        setSelectedItemsForEdit(null);
         setIsExperienceFormShow(false);
         dispatch(setReloadData(true));
         message.success(response.data.message);
@@ -94,7 +94,7 @@ export const AdminExperience = () => {
               <button
                 className="p-1 px-5 !text-white bg-primary"
                 onClick={() => {
-                  dispatch(setSelectedItemsForEdit(exp)); // Set selected experience for editing
+                  setSelectedItemsForEdit(exp) // Set selected experience for editing
                   setIsExperienceFormShow(true);
                 }}
               >
@@ -138,7 +138,7 @@ export const AdminExperience = () => {
               onClick={(e) => {
                 e.preventDefault();
                 setIsExperienceFormShow(false);
-                dispatch(setSelectedItemsForEdit(null));
+                setSelectedItemsForEdit(null);
               }}
             >
               Cencel

@@ -115,4 +115,49 @@ router.post("/experience-edit", async(req, res)=>{
   }
 })
 
+// project operations
+router.post("/project-add", async(req, res)=>{
+  try{
+    const newAddedProjectData = await ProjectModel.insertOne(req.body);
+    res.status(200).send({
+      data: newAddedProjectData,
+      success: true,
+      message: "New Project Added Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error)
+  }
+})
+
+router.delete("/project-delete", async(req, res)=>{
+  try{
+    const deletedProjectData = await ProjectModel.findOneAndDelete({_id: req.body._id});
+    res.status(200).send({
+      data: deletedProjectData,
+      success: true,
+      message: "Project Deleted Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error)
+  }
+})
+
+router.post("/project-edit", async(req, res)=>{
+  try{
+    const updatedProjectData = await ProjectModel.findOneAndUpdate({
+      _id: req.body._id,
+      ...req.body
+    })
+    res.status(200).send({
+      data: updatedProjectData,
+      success: true,
+      message: "Project Data Updated Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error)
+  }
+})
+
+
+
 module.exports = router;

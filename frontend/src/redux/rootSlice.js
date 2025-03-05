@@ -6,7 +6,6 @@ const rootSlice = createSlice({
     loading: false,
     portfolioData: null,
     isReloadData: false, 
-    selectedItemForEdit: null,
   },
   reducers: {
     showLoading: (state, action) => {
@@ -21,9 +20,6 @@ const rootSlice = createSlice({
     setReloadData: (state, action) => {
       state.isReloadData = action.payload;
     },
-    setSelectedItemsForEdit: (state, action) => {
-      state.selectedItemForEdit = action.payload;
-    }
   },
 });
 

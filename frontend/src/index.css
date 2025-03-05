@@ -81,4 +81,11 @@ a:hover{
 .adminpanel button{
     cursor: pointer;
 }
+.projectBox:hover{
+    border-color: #6464b4;
+    transform: scale(1.04);
+}
+.readMore:hover{
+    text-decoration: underline;
+}
   
