@@ -1,23 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { Tabs } from "antd";
 const { TabPane } = Tabs;
 import { AdminIntro } from "./admin sections/AdminIntro";
 import { AdminAbout } from "./admin sections/AdminAbout";
 import { AdminExperience } from "./admin sections/AdminExperience";
-import { AdminProject } from './admin sections/AdminProject';
-import { AdminCourse } from './admin sections/AdminCourse';
-import {AdminContact } from './admin sections/AdminContact'
+import { AdminProject } from "./admin sections/AdminProject";
+import { AdminCourse } from "./admin sections/AdminCourse";
+import { AdminContact } from "./admin sections/AdminContact";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 export const AdminPage = () => {
   const { portfolioData } = useSelector((state) => state.root);
+  const [activeTab, setActiveTab] = useState("1");
+  const location = useLocation();
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get("tab");
+    if (tab) {
+      setActiveTab(tab);
+    }
+  }, [location]);
+
+  const handleTabs = (key) => {
+    console.log(key);
+    setActiveTab(key);
+  };
+
   return (
     <div>
       <Navbar navbarTitle="Admin Panel" sectionsTitle={[]} />
       {portfolioData && (
         <div className="adminpanel p-4 mt-20">
-          <Tabs defaultActiveKey="1">
+          <Tabs activeKey={activeTab} onChange={handleTabs}>
             <TabPane tab="Intro" key="1">
               <AdminIntro />
             </TabPane>

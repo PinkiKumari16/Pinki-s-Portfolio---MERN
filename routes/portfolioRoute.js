@@ -48,7 +48,6 @@ router.post("/update-intro", async (req, res) => {
   }
 });
 
-
 // update about data
 router.post("/update-about", async (req, res) => {
   try {
@@ -66,8 +65,6 @@ router.post("/update-about", async (req, res) => {
     res.status(500).send(error);
   }
 });
-
-
 
 //  experiences operations
 router.post("/experience-add", async (req, res) => {
@@ -98,66 +95,79 @@ router.delete("/experience-delete", async (req, res) => {
   }
 });
 
-router.post("/experience-edit", async(req, res)=>{
-  try{
+router.post("/experience-edit", async (req, res) => {
+  try {
     const editExperienceData = await ExperienceModel.findOneAndUpdate(
-      {_id: req.body._id},
+      { _id: req.body._id },
       req.body,
-      {new: true}
-    )
+      { new: true }
+    );
     res.status(200).send({
       data: editExperienceData,
       success: true,
-      message: "Experience Data Updated Successfully."
-    })
-  }catch(error){
-    res.status(500).send(error)
+      message: "Experience Data Updated Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
-})
+});
 
 // project operations
-router.post("/project-add", async(req, res)=>{
-  try{
+router.post("/project-add", async (req, res) => {
+  try {
     const newAddedProjectData = await ProjectModel.insertOne(req.body);
     res.status(200).send({
       data: newAddedProjectData,
       success: true,
-      message: "New Project Added Successfully."
-    })
-  }catch(error){
-    res.status(500).send(error)
+      message: "New Project Added Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
-})
+});
 
-router.delete("/project-delete", async(req, res)=>{
-  try{
-    const deletedProjectData = await ProjectModel.findOneAndDelete({_id: req.body._id});
+router.delete("/project-delete", async (req, res) => {
+  try {
+    const deletedProjectData = await ProjectModel.findOneAndDelete({
+      _id: req.body._id,
+    });
     res.status(200).send({
       data: deletedProjectData,
       success: true,
-      message: "Project Deleted Successfully."
-    })
-  }catch(error){
-    res.status(500).send(error)
+      message: "Project Deleted Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
-})
+});
 
-router.post("/project-edit", async(req, res)=>{
-  try{
+router.post("/project-edit", async (req, res) => {
+  try {
     const updatedProjectData = await ProjectModel.findOneAndUpdate({
       _id: req.body._id,
-      ...req.body
-    })
+      ...req.body,
+    });
     res.status(200).send({
       data: updatedProjectData,
       success: true,
-      message: "Project Data Updated Successfully."
-    })
-  }catch(error){
-    res.status(500).send(error)
+      message: "Project Data Updated Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
-})
+});
 
-
+router.get("/get-one-project-data/:id", async (req, res) => {
+  try {
+    const oneProjectData = await ProjectModel.findOne({ _id: req.params.id });
+    res.status(200).send({
+      data: oneProjectData,
+      success: true,
+      message: "Get One Project Data Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 module.exports = router;

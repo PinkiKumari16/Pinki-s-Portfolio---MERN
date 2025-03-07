@@ -3,17 +3,12 @@ import axios from "axios";
 import { Form, Input, message, Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import TextArea from "antd/es/input/TextArea";
-import {
-  setReloadData,
-  hideLoading,
-} from "../../redux/rootSlice";
+import { setReloadData, hideLoading } from "../../redux/rootSlice";
 
 export const AdminExperience = () => {
   const [isExperienceFormShow, setIsExperienceFormShow] = useState(false);
-  const [selectedItemForEdit, setSelectedItemsForEdit] = useState(null)
-  const { portfolioData } = useSelector(
-    (state) => state.root
-  );
+  const [selectedItemForEdit, setSelectedItemsForEdit] = useState(null);
+  const { portfolioData } = useSelector((state) => state.root);
   const { experiences } = portfolioData;
   const dispatch = useDispatch();
 
@@ -67,7 +62,7 @@ export const AdminExperience = () => {
     <div>
       <div className="flex justify-end">
         <button
-          className="!text-white font-bold py-2 px-3 bg-primary"
+          className="!text-white !text-[10px] lg:!text-[14px] lg:font-bold py-2 px-3 bg-primary"
           onClick={() => {
             setIsExperienceFormShow(true);
           }}
@@ -76,9 +71,12 @@ export const AdminExperience = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-4 gap-5 mt-2">
+      <div className="flex flex-wrap gap-5 mt-2">
         {experiences.map((exp) => (
-          <div className="shadow border border-gray-400 p-5" id={exp._id}>
+          <div
+            className="shadow border border-gray-400 w-full md:w-2/5 lg:w-1/4 p-5"
+            id={exp._id}
+          >
             <h1 className="text-xl text-primary">{exp.period}</h1>
             <hr className="text-gray-300 mb-1" />
             <p>Company Name: {exp.title}</p>
@@ -94,7 +92,7 @@ export const AdminExperience = () => {
               <button
                 className="p-1 px-5 !text-white bg-primary"
                 onClick={() => {
-                  setSelectedItemsForEdit(exp) // Set selected experience for editing
+                  setSelectedItemsForEdit(exp); // Set selected experience for editing
                   setIsExperienceFormShow(true);
                 }}
               >

@@ -7,6 +7,7 @@ import { Loader } from "./components/Loader";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading, setPortfolioData, setReloadData} from "./redux/rootSlice";
+import { SingleProjectPage } from './pages/SingleProjectPage'
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/:id" element={<SingleProjectPage />} />
         </Routes>
       </BrowserRouter>
     </>

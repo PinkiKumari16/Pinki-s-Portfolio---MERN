@@ -88,4 +88,7 @@ a:hover{
 .readMore:hover{
     text-decoration: underline;
 }
-  
+.projectLink:hover{
+    color: #5050db;
+    text-decoration: underline;
+}
