@@ -15,9 +15,9 @@ export const AdminProject = () => {
   // console.log(portfolioData)
   const { projects } = portfolioData;
   const navigate = useNavigate();
+  const [form] = Form.useForm();
 
   const editOrAddProject = async (values) => {
-    console.log(values);
     try {
       let response;
       if (selectedProjectEdit) {
@@ -36,8 +36,10 @@ export const AdminProject = () => {
         setIsAddProjectFormShow(false);
         message.error(response.data.message);
       }
+      form.resetFields();
     } catch (error) {
       message.error(error);
+      form.resetFields();
     }
   };
 
@@ -118,6 +120,7 @@ export const AdminProject = () => {
         </h1>
         <hr className="border-gray-300 mb-5" />
         <Form
+          form={form}
           layout="vertical"
           onFinish={editOrAddProject}
           initialValues={selectedProjectEdit}

@@ -11,6 +11,7 @@ export const AdminExperience = () => {
   const { portfolioData } = useSelector((state) => state.root);
   const { experiences } = portfolioData;
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
 
   const deleteExperience = async (exp_id) => {
     // console.log(exp_id);
@@ -54,8 +55,10 @@ export const AdminExperience = () => {
       } else {
         message.error(response.data.message);
       }
+      form.resetFields();
     } catch (error) {
       message.error(error);
+      form.resetFields();
     }
   };
   return (
@@ -113,6 +116,7 @@ export const AdminExperience = () => {
           {selectedItemForEdit ? "Edit Experience" : "Add Experience"}
         </h1>
         <Form
+          form={form}
           layout="vertical"
           onFinish={addAndEditExperience}
           initialValues={selectedItemForEdit || {}}
