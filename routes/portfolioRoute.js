@@ -143,10 +143,11 @@ router.delete("/project-delete", async (req, res) => {
 
 router.post("/project-edit", async (req, res) => {
   try {
-    const updatedProjectData = await ProjectModel.findOneAndUpdate({
-      _id: req.body._id,
-      ...req.body,
-    });
+    const updatedProjectData = await ProjectModel.findOneAndUpdate(
+      {_id: req.body._id},
+      req.body,
+      {new: true}
+    );
     res.status(200).send({
       data: updatedProjectData,
       success: true,
@@ -169,5 +170,52 @@ router.get("/get-one-project-data/:id", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+// Courses operations
+router.post("/course-add", async (req, res)=>{
+  try{
+    const addedCourseData = await CourseModel.insertOne(req.body);
+    res.status(200).send({
+      data: addedCourseData,
+      success: true,
+      message: "New Course Added Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error)
+  }
+})
+
+router.post("/course-edit", async (req, res)=>{
+  try{
+    const editedCourseData = await CourseModel.findOneAndUpdate(
+      {_id: req.body._id},
+      req.body,
+      {new: true}
+    );
+    res.status(200).send({
+      data: editedCourseData,
+      success: true,
+      message: "Course Edit Successfully.",
+    });
+  }catch(error){
+    res.status(500).send(error)
+  }
+})
+
+router.delete("/course-delete", async(req, res)=>{
+  try{
+    const deletedCourseData = await CourseModel.findOneAndDelete({
+      _id: req.body._id,
+    })
+    res.status(200).send({
+      data: deletedCourseData,
+      success: true,
+      message: "Course Deleted Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error)
+  }
+  
+})
 
 module.exports = router;

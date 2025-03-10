@@ -24,7 +24,6 @@ export const AdminPage = () => {
   }, [location]);
 
   const handleTabs = (key) => {
-    console.log(key);
     setActiveTab(key);
   };
 
