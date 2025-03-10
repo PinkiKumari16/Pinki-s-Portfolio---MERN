@@ -6,6 +6,7 @@ const ProjectModel = require("../models/ProjectModel");
 const CourseModel = require("../models/CourseModel");
 const CotactModel = require("../models/ContactModel");
 const { Router } = require("express");
+const ContactModel = require("../models/ContactModel");
 
 // get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
@@ -216,6 +217,24 @@ router.delete("/course-delete", async(req, res)=>{
     res.status(500).send(error)
   }
   
+})
+
+// Contact operation
+router.post("/contact-update", async(req, res)=>{
+  try{
+    const editedContactData = await ContactModel.findOneAndUpdate(
+      {_id: req.body._id},
+      req.body,
+      {new: true},
+    )
+    res.status(200).send({
+      data: editedContactData,
+      success: true,
+      message: "Contact Data Updated Successfully."
+    })
+  }catch(error){
+    res.status(500).send(error)
+  }
 })
 
 module.exports = router;

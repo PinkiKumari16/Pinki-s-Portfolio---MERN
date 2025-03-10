@@ -108,7 +108,6 @@ export const AdminCourse = () => {
           {seletedEditData ? "Edit Course" : "Add Course"}
         </h1>
         <Form
-          // form={form}
           layout="vertical"
           onFinish={addAndEditCourse}
           initialValues={seletedEditData}
