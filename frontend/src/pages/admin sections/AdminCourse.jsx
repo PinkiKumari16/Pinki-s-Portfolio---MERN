@@ -65,10 +65,10 @@ export const AdminCourse = () => {
           Add New Course
         </button>
       </div>
-      <div className="flex flex-wrap gap-5 mt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
         {courses.map((course) => (
           <div
-            className="border w-full sm:w-4/9 lg:w-3/10 p-2 border-gray-400 shadow-2xl"
+            className="border p-2 border-gray-400 shadow-2xl"
             key={course._id}
           >
             <h1 className="text-xl text-primary text-center">

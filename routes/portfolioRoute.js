@@ -7,6 +7,7 @@ const CourseModel = require("../models/CourseModel");
 const CotactModel = require("../models/ContactModel");
 const { Router } = require("express");
 const ContactModel = require("../models/ContactModel");
+const admindatas = require("../models/usersModel");
 
 // get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
@@ -145,9 +146,9 @@ router.delete("/project-delete", async (req, res) => {
 router.post("/project-edit", async (req, res) => {
   try {
     const updatedProjectData = await ProjectModel.findOneAndUpdate(
-      {_id: req.body._id},
+      { _id: req.body._id },
       req.body,
-      {new: true}
+      { new: true }
     );
     res.status(200).send({
       data: updatedProjectData,
@@ -173,68 +174,93 @@ router.get("/get-one-project-data/:id", async (req, res) => {
 });
 
 // Courses operations
-router.post("/course-add", async (req, res)=>{
-  try{
+router.post("/course-add", async (req, res) => {
+  try {
     const addedCourseData = await CourseModel.insertOne(req.body);
     res.status(200).send({
       data: addedCourseData,
       success: true,
-      message: "New Course Added Successfully."
-    })
-  }catch(error){
-    res.status(500).send(error)
+      message: "New Course Added Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
-})
+});
 
-router.post("/course-edit", async (req, res)=>{
-  try{
+router.post("/course-edit", async (req, res) => {
+  try {
     const editedCourseData = await CourseModel.findOneAndUpdate(
-      {_id: req.body._id},
+      { _id: req.body._id },
       req.body,
-      {new: true}
+      { new: true }
     );
     res.status(200).send({
       data: editedCourseData,
       success: true,
       message: "Course Edit Successfully.",
     });
-  }catch(error){
-    res.status(500).send(error)
+  } catch (error) {
+    res.status(500).send(error);
   }
-})
+});
 
-router.delete("/course-delete", async(req, res)=>{
-  try{
+router.delete("/course-delete", async (req, res) => {
+  try {
     const deletedCourseData = await CourseModel.findOneAndDelete({
       _id: req.body._id,
-    })
+    });
     res.status(200).send({
       data: deletedCourseData,
       success: true,
-      message: "Course Deleted Successfully."
-    })
-  }catch(error){
-    res.status(500).send(error)
+      message: "Course Deleted Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
-  
-})
+});
 
 // Contact operation
-router.post("/contact-update", async(req, res)=>{
-  try{
+router.post("/contact-update", async (req, res) => {
+  try {
     const editedContactData = await ContactModel.findOneAndUpdate(
-      {_id: req.body._id},
+      { _id: req.body._id },
       req.body,
-      {new: true},
-    )
+      { new: true }
+    );
     res.status(200).send({
       data: editedContactData,
       success: true,
-      message: "Contact Data Updated Successfully."
-    })
-  }catch(error){
-    res.status(500).send(error)
+      message: "Contact Data Updated Successfully.",
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
-})
+});
+
+// get admin data
+router.post("/admin-login", async (req, res) => {
+  try {
+    const adminData = await admindatas.findOne({
+      userName: req.body.userName,
+      password: req.body.password,
+    });
+    adminData.password = "";
+    if (adminData) {
+      res.status(200).send({
+        data: adminData,
+        success: true,
+        message: "Admin Login Successfully.",
+      });
+    } else {
+      res.status(500).send({
+        data: adminData,
+        success: false,
+        message: "Invalid UserName Or Password.",
+      });
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 module.exports = router;

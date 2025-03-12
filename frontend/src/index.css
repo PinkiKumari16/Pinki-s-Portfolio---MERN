@@ -92,3 +92,10 @@ a:hover{
     color: #5050db;
     text-decoration: underline;
 }
+.inputDiv{
+    display: flex;
+    border-bottom: 1px solid #807e7e6c;
+}
+.logoutButton:hover{
+    color: #08a6e5
+}

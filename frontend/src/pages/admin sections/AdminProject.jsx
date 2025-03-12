@@ -67,11 +67,11 @@ export const AdminProject = () => {
           Add New Project
         </button>
       </div>
-      <div className="flex flex-wrap mt-2 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 mt-2 gap-10">
         {projects.map((project) => (
           <div
             id={project._id}
-            className="projectBox flex flex-col border border-gray-400 p-2 lg:gap-15 shadow-2xl w-4/5 md:w-2/7 lg:w-1/5"
+            className="projectBox flex flex-col border lg:gap-5 border-gray-400 p-2 shadow-2xl "
           >
             <div className="sm:h-50">
               <img src={project.projectImage} alt="project image" />

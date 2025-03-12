@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/Home";
 import { AdminPage } from "./pages/AdminPage";
+import { AdminLoginPage } from './pages/AdminLoginPage'
 // import { Navbar } from "./components/Navbar";
 import { Loader } from "./components/Loader";
 import axios from "axios";
@@ -49,6 +50,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin-login" element={<AdminLoginPage />} />
           <Route path="/admin/:id" element={<SingleProjectPage />} />
         </Routes>
       </BrowserRouter>

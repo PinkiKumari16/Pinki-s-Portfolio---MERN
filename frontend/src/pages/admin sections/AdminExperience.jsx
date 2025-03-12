@@ -3,7 +3,7 @@ import axios from "axios";
 import { Form, Input, message, Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import TextArea from "antd/es/input/TextArea";
-import { setReloadData, hideLoading } from "../../redux/rootSlice";
+import { setReloadData } from "../../redux/rootSlice";
 
 export const AdminExperience = () => {
   const [isExperienceFormShow, setIsExperienceFormShow] = useState(false);
@@ -11,7 +11,6 @@ export const AdminExperience = () => {
   const { portfolioData } = useSelector((state) => state.root);
   const { experiences } = portfolioData;
   const dispatch = useDispatch();
-  const [form] = Form.useForm();
 
   const deleteExperience = async (exp_id) => {
     // console.log(exp_id);
@@ -55,10 +54,8 @@ export const AdminExperience = () => {
       } else {
         message.error(response.data.message);
       }
-      form.resetFields();
     } catch (error) {
       message.error(error);
-      form.resetFields();
     }
   };
   return (
@@ -67,6 +64,7 @@ export const AdminExperience = () => {
         <button
           className="!text-white !text-[10px] lg:!text-[14px] lg:font-bold py-2 px-3 bg-primary"
           onClick={() => {
+            setSelectedItemsForEdit(null);
             setIsExperienceFormShow(true);
           }}
         >
@@ -74,10 +72,10 @@ export const AdminExperience = () => {
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-5 mt-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-2">
         {experiences.map((exp) => (
           <div
-            className="shadow border border-gray-400 w-full md:w-2/5 lg:w-1/4 p-5"
+            className="shadow border border-gray-400 p-5"
             id={exp._id}
           >
             <h1 className="text-xl text-primary">{exp.period}</h1>
@@ -116,7 +114,6 @@ export const AdminExperience = () => {
           {selectedItemForEdit ? "Edit Experience" : "Add Experience"}
         </h1>
         <Form
-          form={form}
           layout="vertical"
           onFinish={addAndEditExperience}
           initialValues={selectedItemForEdit || {}}
@@ -139,8 +136,8 @@ export const AdminExperience = () => {
               className="!text-primary border !border-primary px-8 py-2 cursor-pointer"
               onClick={(e) => {
                 e.preventDefault();
-                setIsExperienceFormShow(false);
                 setSelectedItemsForEdit(null);
+                setIsExperienceFormShow(false);
               }}
             >
               Cencel
