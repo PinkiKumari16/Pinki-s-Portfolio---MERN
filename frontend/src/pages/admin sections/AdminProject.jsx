@@ -16,6 +16,8 @@ export const AdminProject = () => {
   const navigate = useNavigate();
 
   const editOrAddProject = async (values) => {
+    const temTechnology = values.technology.split(',');
+    values.technology = temTechnology;
     try {
       let response;
       if (selectedProjectEdit) {
