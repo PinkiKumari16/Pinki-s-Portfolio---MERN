@@ -25,7 +25,7 @@ export const HomePage = () => {
       {portfolioData && (
         <>
           <Navbar navbarTitle="Pinki's Portfolio" sectionsTitle={sectionsTitle}/>
-          <div className="bg-primary flex flex-col gap-25 sm:gap-20 mt-15 py-5 md:py-15 lg:py-5 px-8 md:px-20 lg:px-30">
+          <div className="bg-primary !w-full flex flex-col gap-25 sm:gap-20 mt-10 md:mt-12 py-5 md:py-15 lg:py-15 px-8 md:px-20 lg:px-30">
             <IntroSection />
             <AboutSection />
             <Experiences />
