@@ -19,7 +19,7 @@ export const Experiences = () => {
   return (
     <div id="experiences">
       <TitlesName title="Experiences" />
-      <div className="flex flex-col gap-12 md:justify-around md:flex-row md:items-center sm:mt-10">
+      <div className="flex flex-col mt-5 gap-12 md:justify-around md:flex-row md:items-center">
         <div className="flex md:flex-col overflow-x-scroll md:overflow-hidden gap-8 sm:border-l-2 border-[#135e4c82]">
           {experiences.map((expData, index) => (
             <h1

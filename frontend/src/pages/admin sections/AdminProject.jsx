@@ -14,9 +14,12 @@ export const AdminProject = () => {
   const { portfolioData } = useSelector((state) => state.root);
   const { projects } = portfolioData;
   const navigate = useNavigate();
+  console.log(selectedProjectEdit);
 
   const editOrAddProject = async (values) => {
-    const temTechnology = values.technology.split(',');
+    console.log(typeof values.technology);
+
+    const temTechnology = values.technology.split(",");
     values.technology = temTechnology;
     try {
       let response;
@@ -160,6 +163,3 @@ export const AdminProject = () => {
     </div>
   );
 };
-
-// https://movify-project-bmmk.vercel.app/
-// projectImage : https://img.freepik.com/free-photo/3d-rendering-cute-girl-with-glasses-working-her-laptop_1057-45909.jpg?t=st=1738050869~exp=1738054469~hmac=caf4424a20edc4d179a6407c2b95e57d6943fe43425524f95836484cee125feb&w=740

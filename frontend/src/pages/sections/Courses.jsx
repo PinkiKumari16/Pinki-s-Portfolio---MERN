@@ -9,7 +9,7 @@ export const Courses = () => {
   return (
     <div id="courses">
       <TitlesName title="Courses" />
-      <div className="flex flex-col lg:flex-row gap-10 lg:justify-around">
+      <div className="flex flex-col lg:flex-row gap-10 lg:justify-around mt-5 sm:mt-0">
         <div className="flex flex-row overflow-x-scroll lg:overflow-x-hidden lg:flex-col gap-5 border-l-3 text-[#044150]">
           {courses.map((course, index) => (
             <h1
@@ -36,7 +36,7 @@ export const Courses = () => {
           <img
             src={courses[selecetedCourseIndex].courseImage || " "}
             alt="course image"
-            className="h-[40vh] w-full md:w-[40vw] lg:w-[30vw] bg-cover bg-center"
+            className="h-[45vh] w-6/7 md:w-[40vw] lg:w-[30vw] bg-cover bg-center"
           />
         </div>
       </div>

@@ -9,7 +9,7 @@ export const AboutSection = () => {
   const { developerImage, description1, description2, skills } = about;
 
   return (
-    <div id="about">
+    <div id="about" className="mt-20 md:mt-10 lg:mt-0">
       <TitlesName title="About_Me" />
       <div className="flex flex-col items-center gap-7 sm:gap-15 justify-center sm:flex-row sm:p-10 md:p-1">
         <div

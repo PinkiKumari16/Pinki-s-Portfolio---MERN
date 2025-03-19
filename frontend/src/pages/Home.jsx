@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../components/Navbar"; 
+import { Navbar } from "../components/Navbar";
 import { IntroSection } from "./sections/IntroSection";
 import { AboutSection } from "./sections/AboutSection";
 import { Experiences } from "./sections/Experiences";
@@ -18,14 +18,17 @@ export const HomePage = () => {
     "Experiences",
     "Projects",
     "Courses",
-    "Contact"
-  ]
+    "Contact",
+  ];
   return (
     <>
       {portfolioData && (
         <>
-          <Navbar navbarTitle="Pinki's Portfolio" sectionsTitle={sectionsTitle}/>
-          <div className="bg-primary !w-full flex flex-col gap-25 sm:gap-20 mt-10 md:mt-12 py-5 md:py-15 lg:py-15 px-8 md:px-20 lg:px-30">
+          <Navbar
+            navbarTitle="Pinki's Portfolio"
+            sectionsTitle={sectionsTitle}
+          />
+          <div className="bg-primary !w-full flex flex-col gap-20 sm:gap-15 mt-10 md:mt-12 py-5 md:py-15 lg:py-15 px-8 md:px-20 lg:px-30">
             <IntroSection />
             <AboutSection />
             <Experiences />
