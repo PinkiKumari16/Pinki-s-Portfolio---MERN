@@ -17,16 +17,12 @@ export const AdminProject = () => {
   console.log(selectedProjectEdit);
 
   const editOrAddProject = async (values) => {
-    console.log(typeof values.technology);
-
-    const temTechnology = values.technology.split(",");
-    values.technology = temTechnology;
     try {
       let response;
       if (selectedProjectEdit) {
         response = await axios.post("/api/portfoliodata/project-edit", {
-          _id: selectedProjectEdit._id,
           ...values,
+          _id: selectedProjectEdit._id
         });
       } else {
         response = await axios.post("/api/portfoliodata/project-add", values);

@@ -80,8 +80,8 @@ export const AdminExperience = () => {
           >
             <h1 className="text-xl text-primary">{exp.period}</h1>
             <hr className="text-gray-300 mb-1" />
-            <p>Company Name: {exp.title}</p>
-            <p>Role: {exp.designation}</p>
+            <p className="text-primary">Company Name: {exp.title}</p>
+            <p className="font-bold text-primary">Role: {exp.designation}</p>
             <p>{exp.description}</p>
             <div className="flex justify-end gap-5">
               <button

@@ -43,7 +43,7 @@ export const AdminPage = () => {
     <div>
       <Navbar navbarTitle="Admin Panel" sectionsTitle={[]} />
       {portfolioData && (
-        <div className="p-4 mt-20 justify-between">
+        <div className="p-4 mt-10 justify-between">
           <div className="flex justify-end">
             <h1
               className="logoutButton text-primary text-xl underline cursor-pointer"
