@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export const ChildProjectCard = ({ projectData }) => {
   const navigate = useNavigate();
-  
+
   return (
     <div className="m-3">
       <p
@@ -22,7 +22,7 @@ export const ChildProjectCard = ({ projectData }) => {
           </h1>
           <p>
             <span className="font-bold">Technologyies Used: </span>
-            {projectData.technology.join(', ')}
+            {projectData.technology.join(", ")}
           </p>
           <p>
             <span className="font-bold">Deploy Link: </span>
@@ -34,7 +34,13 @@ export const ChildProjectCard = ({ projectData }) => {
               {projectData.link}
             </a>
           </p>
-          <div>{projectData.projectDescription.split('.')}</div>
+          <div>
+            {projectData.projectDescription
+              .split("Impact:")
+              .map((para, index) => (
+                <p key={index}>{para}</p>
+              ))}
+          </div>
         </div>
       </div>
     </div>

@@ -39,12 +39,13 @@ export const Projects = () => {
                 <span className="text-white">{technologyUsed + ", "}</span>
               ))}
             </div>
-            <p className="text-white !mt-4">
-              {projects[projectIndex].projectDescription || " "}
-            </p>
-            {/* <p className="text-white">
-              {projects[projectIndex].courseDescription || " "}
-            </p> */}
+            <div className="text-white !mt-4">
+              {(projects[projectIndex].projectDescription || " ")
+                .split("Impact:")
+                .map((para, index) => (
+                  <p key={index}>{para}</p>
+                ))}
+            </div>
           </div>
         </div>
       </div>

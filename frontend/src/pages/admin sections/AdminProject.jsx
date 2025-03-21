@@ -14,7 +14,7 @@ export const AdminProject = () => {
   const { portfolioData } = useSelector((state) => state.root);
   const { projects } = portfolioData;
   const navigate = useNavigate();
-  console.log(selectedProjectEdit);
+  
 
   const editOrAddProject = async (values) => {
     try {

@@ -3,7 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export const Navbar = ({ navbarTitle, sectionsTitle }) => {
   const [isVisibility, setVisibility] = useState(false);
-  console.log(isVisibility);
+  // console.log(isVisibility);
   return (
     <>
       <nav className="flex p-3 text-[#fff] bg-primary lg:text-2xl justify-between fixed top-0 w-full h-12">
