@@ -24,20 +24,20 @@ export const Courses = () => {
             </h1>
           ))}
         </div>
-        <div className="flex flex-col md:flex-row items-center gap-10 lg:w-3/5">
-          <div className="md:w-1/2 lg:w-2/3">
-            <h1 className="text-secondry text-3xl py-5 font-semibold">
-              {courses[selecetedCourseIndex].courseName || " "}
-            </h1>
+        <div className="flex flex-col lg:w-3/5">
+          <h1 className="text-secondry text-3xl py-5 font-semibold">
+            {courses[selecetedCourseIndex].courseName || " "}
+          </h1>
+          <div className="flex flex-col items-center md:flex-row gap-5">
             <p className="text-white">
-              {courses[selecetedCourseIndex].courseDescription || " "}
+                {courses[selecetedCourseIndex].courseDescription || " "}
             </p>
-          </div>
-          <img
-            src={courses[selecetedCourseIndex].courseImage || " "}
-            alt="course image"
-            className="h-[45vh] w-6/7 md:w-[40vw] lg:w-[30vw] bg-cover bg-center"
-          />
+            <img
+              src={courses[selecetedCourseIndex].courseImage || " "}
+              alt="course image"
+              className="h-[32vh] w-6/7 md:w-[40vw] lg:w-[20vw] bg-cover bg-center"
+            />
+         </div>
         </div>
       </div>
     </div>
