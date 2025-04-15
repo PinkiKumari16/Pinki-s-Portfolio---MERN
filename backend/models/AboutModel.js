@@ -15,7 +15,7 @@ const aboutSchema = mongoose.Schema({
   },
   skills: {
     type: Array,
-    requried: true,
+    required: true,
   },
 });
 

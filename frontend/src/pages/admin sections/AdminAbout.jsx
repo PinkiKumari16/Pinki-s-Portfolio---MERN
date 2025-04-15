@@ -13,17 +13,30 @@ export const AdminAbout = () => {
   const [imageDeveloperPinki, setImageDeveloperPinki] = useState(
     about.developerImage
   );
+  const [file, setFile] = useState(null);
 
   const getAboutData = async (values) => {
     const tempSkills = values.skills.split(",");
     values.skills = tempSkills;
-    values.developerImage = imageDeveloperPinki;
+
+    // values.developerImage = imageDeveloperPinki;
+    const formData = new FormData();
+    formData.append("_id", about._id);
+    formData.append("description1", values.description1);
+    formData.append("description2", values.description2);
+    formData.append("skills", JSON.stringify(values.skills));
+    if(file.name){
+      formData.append("developerImage", file);
+    }else{
+      formData.append("developerImage",imageDeveloperPinki);
+    }
 
     try {
       dispatch(showLoading());
-      const response = await axios.post("/api/portfoliodata/update-about", {
-        _id: about._id,
-        ...values,
+      const response = await axios.post("/api/portfoliodata/update-about",formData, {
+        headers:{
+          "Content-Type": "multipart/form-data",
+        }
       });
       if (response.data.success) {
         message.success(response.data.message);
@@ -36,9 +49,10 @@ export const AdminAbout = () => {
       dispatch(hideLoading());
     }
   };
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    const convertedImage = await convertToBase64(file);
+  const handleFileUpload =(e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    const convertedImage = URL.createObjectURL(selectedFile);
     // console.log(convertedImage);
     setImageDeveloperPinki(convertedImage);
   };

@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const dbConfig = require("./config/dbConfig");
 const portfolioRoute = require("./routes/portfolioRoute");
+const cors = require('cors');
+
 // const updateInrtoRoute = require("./routes/updateInrtoRoute");
 const path = require("path");
 
@@ -10,6 +12,7 @@ const _dirname = path.resolve();
 
 
 app.use(express.json());
+app.use(cors());
 app.use("/api/portfoliodata", portfolioRoute);
 // app.use("/adminPanel", updateInrtoRoute);
 
