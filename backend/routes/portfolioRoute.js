@@ -8,7 +8,7 @@ const CotactModel = require("../models/ContactModel");
 const { Router } = require("express");
 const ContactModel = require("../models/ContactModel");
 const admindatas = require("../models/usersModel");
-const { upload } = require('../multerStorage');
+const { upload } = require("../multerStorage");
 
 // get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
@@ -52,36 +52,40 @@ router.post("/update-intro", async (req, res) => {
 });
 
 // update about data
-router.post("/update-about", upload.single('developerImage'), async (req, res) => {
-  try {
-    console.log("Request body:", req.body);
-    console.log("Uploaded file:", req.file);
-    if(!req.file){
-      return res.status(400).send({success: false, message: "No file uploaded."});
+router.post(
+  "/update-about",
+  upload.single("developerImage"),
+  async (req, res) => {
+    try {
+      if (!req.file) {
+        return res
+          .status(400)
+          .send({ success: false, message: "No file uploaded." });
+      }
+      const file = req.file;
+
+      const updateData = {
+        ...req.body,
+        developerImage: file.filename,
+        skills: JSON.parse(req.body.skills),
+      };
+
+      const newAboutData = await AboutModel.findOneAndUpdate(
+        { _id: req.body._id },
+        updateData,
+        { new: true }
+      );
+      res.status(200).send({
+        data: newAboutData,
+        success: true,
+        message: "About Data Updated Successfully.",
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).send(error);
     }
-    const file = req.file;
-    console.log("uploaded file **********",file);
-
-    const updateData = {
-      ...req.body,
-      developerImage: file.path,
-    };
-
-    const newAboutData = await AboutModel.findOneAndUpdate(
-      { _id: req.body._id },
-      updateData,
-      { new: true }
-    );
-    res.status(200).send({
-      data: newAboutData,
-      success: true,
-      message: "About Data Updated Successfully.",
-    });
-  } catch (error) {
-    console.error("Error:", error);
-    res.status(500).send(error);
   }
-});
+);
 
 //  experiences operations
 router.post("/experience-add", async (req, res) => {

@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 export const AboutSection = () => {
   const { portfolioData } = useSelector((state) => state.root);
   const { about } = portfolioData;
-  const { developerImage, description1, description2, skills } = about;
+  let { developerImage, description1, description2, skills } = about;
+  developerImage = developerImage.split(" ").join("%20");
 
   return (
     <div id="about" className="mt-20 md:mt-10 lg:mt-0">
@@ -15,7 +16,7 @@ export const AboutSection = () => {
         <div
           className="h-[50vh] w-full sm:h-[60vh] sm:w-[30vw] bg-cover bg-center"
           style={{
-            backgroundImage: `url(${developerImage})`,
+            backgroundImage: `url(/${developerImage})`,
           }}
         ></div>
         <div className="flex flex-col gap-10 sm:w-1/2 sm:p-0 md:gap-5 md:w-2/3 md:text-[14px] lg:gap-10 lg:text-[18px] text-white">

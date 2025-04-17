@@ -10,9 +10,11 @@ export const AdminAbout = () => {
   const { portfolioData } = useSelector((state) => state.root);
   const dispatch = useDispatch();
   const { about } = portfolioData;
+  console.log(about);
   const [imageDeveloperPinki, setImageDeveloperPinki] = useState(
     about.developerImage
   );
+
   const [file, setFile] = useState(null);
 
   const getAboutData = async (values) => {
@@ -25,19 +27,23 @@ export const AdminAbout = () => {
     formData.append("description1", values.description1);
     formData.append("description2", values.description2);
     formData.append("skills", JSON.stringify(values.skills));
-    if(file.name){
+    if (file.name) {
       formData.append("developerImage", file);
-    }else{
-      formData.append("developerImage",imageDeveloperPinki);
+    } else {
+      formData.append("developerImage", imageDeveloperPinki);
     }
 
     try {
       dispatch(showLoading());
-      const response = await axios.post("/api/portfoliodata/update-about",formData, {
-        headers:{
-          "Content-Type": "multipart/form-data",
+      const response = await axios.post(
+        "/api/portfoliodata/update-about",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
+      );
       if (response.data.success) {
         message.success(response.data.message);
       } else {
@@ -49,7 +55,7 @@ export const AdminAbout = () => {
       dispatch(hideLoading());
     }
   };
-  const handleFileUpload =(e) => {
+  const handleFileUpload = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
     const convertedImage = URL.createObjectURL(selectedFile);
