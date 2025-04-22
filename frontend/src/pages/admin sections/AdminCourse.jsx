@@ -14,7 +14,7 @@ export const AdminCourse = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const coursePerPage = 3;
-  const totalPage = Math.ceil(courses.length / coursePerPage);
+  const totalPage = Math.ceil((courses.length) / coursePerPage);
   const lastIndex = currentPage * coursePerPage;
   const startIndex = lastIndex - coursePerPage;
 
