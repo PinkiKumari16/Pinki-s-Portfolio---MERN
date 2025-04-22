@@ -14,7 +14,7 @@ export const AboutSection = () => {
       <TitlesName title="About_Me" />
       <div className="flex flex-col items-center gap-7 sm:gap-15 justify-center sm:flex-row sm:p-10 md:p-1">
         <div
-          className="h-[50vh] w-full sm:h-[60vh] sm:w-[30vw] bg-cover bg-center"
+          className="h-[50vh] w-full sm:h-[60vh] sm:w-[30vw] bg-cover bg-center lg:rounded-full"
           style={{
             backgroundImage: `url(/${developerImage})`,
           }}

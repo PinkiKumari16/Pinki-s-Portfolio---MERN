@@ -72,18 +72,18 @@ export const AdminAbout = () => {
         }}
       >
         <Form.Item label="Developer Image URL">
-          <div className="flex w-1/4 items-center">
+          <div className="flex w-1/4 items-center gap-4">
             <img
               src={imageDeveloperPinki}
               alt="developer image"
-              className="w-35"
+              className="w-35 h-38 rounded-full"
             />
-            <p
+            <button
               onClick={() => document.getElementById("selectedImage").click()}
-              className="cursor-pointer"
+              className="cursor-pointer border-2 p-1"
             >
               Choose the file
-            </p>
+            </button>
           </div>
           <Input
             type="file"
@@ -111,16 +111,3 @@ export const AdminAbout = () => {
     </div>
   );
 };
-
-function convertToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}

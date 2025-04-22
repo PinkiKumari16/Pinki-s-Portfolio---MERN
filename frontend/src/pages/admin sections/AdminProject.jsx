@@ -74,7 +74,7 @@ export const AdminProject = () => {
             id={project._id}
             className="projectBox flex flex-col border lg:gap-5 border-gray-400 p-2 shadow-2xl "
           >
-            <div className="sm:h-50">
+            <div>
               <img src={project.projectImage} alt="project image" />
             </div>
             <div>
