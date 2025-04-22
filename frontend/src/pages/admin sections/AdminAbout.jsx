@@ -21,7 +21,6 @@ export const AdminAbout = () => {
     const tempSkills = values.skills.split(",");
     values.skills = tempSkills;
 
-    // values.developerImage = imageDeveloperPinki;
     const formData = new FormData();
     formData.append("_id", about._id);
     formData.append("description1", values.description1);
