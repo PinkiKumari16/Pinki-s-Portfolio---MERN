@@ -99,3 +99,9 @@ a:hover{
 .logoutButton:hover{
     color: #08a6e5
 }
+.paginationBtn{
+    padding: 5px 10px;
+    border: 2px solid var(--color-primary);
+    color: blue;
+    cursor: pointer;
+}

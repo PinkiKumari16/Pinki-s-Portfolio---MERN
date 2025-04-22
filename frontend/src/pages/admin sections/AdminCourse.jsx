@@ -11,6 +11,12 @@ export const AdminCourse = () => {
   const [seletedEditData, setSeletedEditData] = useState(null);
   const { portfolioData } = useSelector((state) => state.root);
   const { courses } = portfolioData;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const coursePerPage = 3;
+  const totalPage = Math.ceil(courses.length / coursePerPage);
+  const lastIndex = currentPage * coursePerPage;
+  const startIndex = lastIndex - coursePerPage;
 
   const addAndEditCourse = async (values) => {
     try {
@@ -54,7 +60,24 @@ export const AdminCourse = () => {
   };
   return (
     <div>
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-5">
+        <div>
+          <button
+            className="paginationBtn"
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >
+            &lt;
+          </button>
+          <button className="paginationBtn">{currentPage}</button>
+          <button
+            className="paginationBtn"
+            disabled={currentPage === totalPage}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+          >
+            &gt;
+          </button>
+        </div>
         <button
           className="border p-2 bg-primary !text-white"
           onClick={() => {
@@ -66,7 +89,7 @@ export const AdminCourse = () => {
         </button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
-        {courses.map((course) => (
+        {courses.slice(startIndex, lastIndex).map((course) => (
           <div
             className="border p-2 border-gray-400 shadow-2xl"
             key={course._id}
