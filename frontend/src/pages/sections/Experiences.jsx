@@ -31,6 +31,7 @@ export const Experiences = () => {
                   ? "font-semibold text-tertiary sm:border-l-4 border-b-2 sm:border-b-0 bg-[#1a7f5a31]"
                   : "text-white"
               }`}
+              key={expData._id}
             >
               {expData.period || " "}
             </h1>

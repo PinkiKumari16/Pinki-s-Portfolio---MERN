@@ -8,7 +8,7 @@ export const ExperienceContent = ({ companyExperience }) => {
           {companyExperience.designation || " "}
         </h1>
         <strong>{companyExperience.title || " "}</strong>
-        <p className>{companyExperience.description || " "}</p>
+        <p>{companyExperience.description || " "}</p>
       </div>
     </>
   );

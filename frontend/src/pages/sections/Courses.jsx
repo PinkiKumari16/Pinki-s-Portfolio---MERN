@@ -19,6 +19,7 @@ export const Courses = () => {
                   : "text-white"
               }`}
               onClick={() => setSelectedCourseIndex(index)}
+              key={course._id}
             >
               {course.courseName || " "}
             </h1>
@@ -30,14 +31,14 @@ export const Courses = () => {
           </h1>
           <div className="flex flex-col items-center md:flex-row gap-5">
             <p className="text-white">
-                {courses[selecetedCourseIndex].courseDescription || " "}
+              {courses[selecetedCourseIndex].courseDescription || " "}
             </p>
             <img
               src={courses[selecetedCourseIndex].courseImage || " "}
               alt="course image"
               className="h-[32vh] w-6/7 md:w-[40vw] lg:w-[20vw] bg-cover bg-center"
             />
-         </div>
+          </div>
         </div>
       </div>
     </div>

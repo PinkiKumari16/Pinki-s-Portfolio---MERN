@@ -30,7 +30,7 @@ export const AboutSection = () => {
         </h1>
         <div className="flex flex-wrap gap-5 mt-5">
           {skills.map((skill) => (
-            <SkillButton data={skill} className="text-white" />
+            <SkillButton data={skill} className="text-white" key={skill} />
           ))}
         </div>
       </div>

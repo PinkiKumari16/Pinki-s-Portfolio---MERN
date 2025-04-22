@@ -19,24 +19,29 @@ export const Projects = () => {
                   : "text-white"
               }`}
               onClick={() => setProjectIndex(index)}
+              key={project._id}
             >
               {project.projectName || " "}
             </h1>
           ))}
         </div>
         <div className="flex flex-col md:flex-row items-center gap-10 lg:w-7/10">
-          <img
-            src={projects[projectIndex].projectImage || " "}
-            alt="course image"
-            className="h-[45vh] w-6/7 md:w-[30vw] lg:w-[20vw] bg-cover bg-center"
-          />
+          <a href={projects[projectIndex].link} target="_blank">
+            <img
+              src={projects[projectIndex].projectImage || " "}
+              alt="course image"
+              className="h-[45vh] w-6/7 md:w-[30vw] lg:w-[20vw] bg-cover bg-center"
+            />
+          </a>
           <div className="md:w-1/2 lg:w-2/3">
             <h1 className="text-secondry text-3xl py-3 font-semibold">
               {projects[projectIndex].projectName || " "}
             </h1>
             <div className="font-semibold">
               {projects[projectIndex].technology.map((technologyUsed) => (
-                <span className="text-white">{technologyUsed + ", "}</span>
+                <span className="text-white" key={technologyUsed}>
+                  {technologyUsed + ", "}
+                </span>
               ))}
             </div>
             <div className="text-white !mt-4">
